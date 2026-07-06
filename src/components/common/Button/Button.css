@@ -1,0 +1,93 @@
+/* COMMON BUTTON */
+
+.custom-btn {
+  border: none;
+  outline: none;
+
+  padding: 10px 22px;
+  border-radius: 25px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+/* Navbar btn */
+.navbar-btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  background-color: #00D4AA !important;
+}
+/* ===== PRIMARY BUTTON ===== */
+
+.primary {
+  background-color: #00D4AA !important;
+  color: black;
+}
+
+.primary:hover {
+  background-color:  #8ff6e6 !important;
+  transform: translateY(-2px);
+}
+
+/* ===== SECONDARY BUTTON ===== */
+
+.secondary {
+  background-color: transparent;
+  color: #00D4AA ;
+
+  border: 1px solid #00D4AA ;
+}
+
+.secondary:hover {
+  background-color: #00D4AA ;
+  color: black;
+
+  transform: translateY(-2px);
+}
+
+/* LARGE LAPTOP (1440px+) */
+@media (min-width: 1440px) {
+
+  .custom-btn {
+    padding: 12px 28px;
+    font-size: 15px;
+    border-radius: 30px;
+  }
+
+  .navbar-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+}
+
+/* FULL HD (1920px+) */
+@media (min-width: 1920px) {
+
+  .custom-btn {
+    padding: 15px 34px;
+    font-size: 18px;
+    border-radius: 35px;
+  }
+
+  .navbar-btn {
+    padding: 10px 22px;
+    font-size: 16px;
+  }
+}
+
+/* 2K / 4K MONITORS (2560px+) */
+@media (min-width: 2560px) {
+
+  .custom-btn {
+    padding: 18px 42px;
+    font-size: 22px;
+    border-radius: 40px;
+  }
+
+  .navbar-btn {
+    padding: 12px 28px;
+    font-size: 18px;
+  }
+}
