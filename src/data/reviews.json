@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Arjun",
+    "city": "Madurai",
+    "tourPackage": "Kodaikanal Tour",
+    "rating": 5,
+    "review": "Excellent service from start to finish! The bus was comfortable and the driver was very professional. Kodaikanal views were breathtaking. Highly recommend Thousand Light Holidays!"
+  },
+  {
+    "id": 2,
+    "name": "Ajay",
+    "city": "Coimbatore",
+    "tourPackage": "Munnar Package",
+    "rating": 4,
+    "review": "Final ennadha safe a pochu! The Munnar package was well-organized with great hotel stays and scenic stops. Will definitely book again for the next trip."
+  },
+  {
+    "id": 3,
+    "name": "Nivi",
+    "city": "Tamil Nadu",
+    "tourPackage": "Munnar Family Tour",
+    "rating": 5,
+    "review": "We had a wonderful family trip to Munnar. The kids loved every moment. The team was very caring and accommodating. Five stars without any doubt!"
+  },
+  {
+    "id": 4,
+    "name": "Seethalakshmi",
+    "city": "Tamil Nadu",
+    "tourPackage": "Group Tour",
+    "rating": 5,
+    "review": "Trip super ah irundhuchu! Our entire group had a blast. Everything was perfectly managed — accommodation, food, sightseeing. Thank you Thousand Light Holidays!"
+  },
+  {
+    "id": 5,
+    "name": "Ramesh",
+    "city": "Chennai",
+    "tourPackage": "Ooty Package",
+    "rating": 4,
+    "review": "Beautiful trip to Ooty. The toy train experience was memorable. Staff was helpful throughout the journey. Great value for money package!"
+  },
+  {
+    "id": 6,
+    "name": "Priya",
+    "city": "Trichy",
+    "tourPackage": "Kerala Backwaters",
+    "rating": 5,
+    "review": "The Kerala backwaters experience was magical! Houseboat stay was beyond expectations. Our guide was knowledgeable and friendly. Perfect holiday!"
+  }
+]

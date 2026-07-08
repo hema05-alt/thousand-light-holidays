@@ -4,6 +4,12 @@ import { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import HeroSection from "../components/HeroSection/HeroSection";
 import About from "../components/About/About";
+import Packages from "../components/Packages/Packages";
+import Gallery from "../components/Gallery/Gallery";
+import Services from "../components/Services/Services";
+import Testimonials from "../components/Testimonials/Testimonials";
+import Footer from "../components/Footer/Footer";
+import BookingForm from "../components/Bookingform/Bookingform";
 
 export default function Home() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -12,19 +18,19 @@ export default function Home() {
   const closeBookingForm = () => setIsBookingOpen(false);
 
   return (
-    <>
+    <main suppressHydrationWarning>
       <Navbar openBookingForm={openBookingForm} />
       <HeroSection />
       <About />
-
-      <section id="packages"></section>
-      <section id="services"></section>
-      <section id="testimonials"></section>
-      <section id="contact"></section>
+      <Packages />
+      <Services />
+      <Testimonials />
+      <Gallery />
+      <Footer />
 
       {isBookingOpen && (
-        <div>{/* BookingForm/modal component goes here */}</div>
+        <BookingForm closeForm={closeBookingForm} />
       )}
-    </>
+    </main>
   );
 }
