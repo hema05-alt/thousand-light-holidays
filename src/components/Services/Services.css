@@ -1,0 +1,926 @@
+/* SERVICES SECTION */
+
+.services {
+  padding: 60px 8%;
+  background: #f8f8f8;
+  position: relative;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+/* Blob 1 — top left, teal */
+.services::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.14) 0%, transparent 70%);
+  filter: blur(45px);
+  animation: blobDrift1 11s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Blob 2 — bottom right, navy */
+.services::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  right: -100px;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(11, 31, 59, 0.1) 0%, transparent 70%);
+  filter: blur(55px);
+  animation: blobDrift2 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Blob 3 — center */
+.blob-mid {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.07) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: blobDrift3 17s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.services-wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* LEFT SIDE */
+
+.services-left {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Service Tag */
+.service-tag {
+  color: #00D4AA;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.service-tag::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #00D4AA, #00ffe0, #00D4AA);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.service-tag:hover::after {
+  animation: shimmer 1s linear infinite;
+}
+
+/* Heading */
+.services-left h2 {
+  font-size: 34px;
+  line-height: 1.2;
+  color: #111;
+  margin-bottom: 15px;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.services-left h2 span {
+  color: #00D4AA;
+}
+
+/* Description */
+.service-description {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 90%;
+  opacity: 0;
+}
+
+/* Service Image */
+.service-image {
+  height: 180px;
+  border-radius: 22px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  position: relative;
+  opacity: 0;
+}
+
+.service-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(0, 212, 170, 0.08) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 0.8s ease, filter 0.5s ease;
+}
+
+.service-image:hover img {
+  transform: scale(1.12) rotate(1deg);
+  filter: brightness(1.08);
+}
+
+/* Service Cards */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.mini-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ececec;
+  border-radius: 18px;
+  padding: 18px;
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mini-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 30px rgba(0, 212, 170, 0.14);
+  animation: borderPulse 1.8s ease infinite;
+}
+
+/* Card glow follow */
+.mini-card::before {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(rgba(0, 212, 170, 0.18), transparent 70%);
+  top: -120px;
+  left: -120px;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.mini-card:hover::before {
+  opacity: 1;
+  transform: translate(40px, 40px);
+}
+
+.mini-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 212, 170, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00D4AA;
+  font-size: 20px;
+  margin-bottom: 12px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+}
+
+.mini-icon svg {
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+.mini-card:hover .mini-icon {
+  transform: rotate(12deg) scale(1.12);
+  background: rgba(0, 212, 170, 0.18);
+}
+
+.mini-card h4 {
+  color: #111;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.mini-card p {
+  color: #777;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* RIGHT SIDE — TRAVEL CARD */
+
+.travel-card {
+  background: rgba(11, 31, 59, 0.9);
+  border-radius: 28px;
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  animation: pulseGlow 5s ease-in-out infinite;
+  opacity: 0;
+}
+
+.travel-card:hover {
+  transform: rotateX(4deg) rotateY(-4deg) translateY(-8px);
+}
+
+/* Ambient glow orb */
+.travel-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 170, 1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: glowOrb 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+.travel-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Label */
+.travel-label {
+  color: #00D4AA;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* Heading */
+.travel-card h3 {
+  color: #fff;
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 14px 0 24px;
+}
+
+/* Shimmer text */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #00D4AA 0%,
+    #ffffff 35%,
+    #00ffe0 55%,
+    #00D4AA 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  display: inline-block;
+}
+
+/* Travel grid */
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.travel-grid p {
+  color: #d8d8d8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  opacity: 0;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.travel-grid p:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.travel-grid p:hover .check-icon {
+  animation: checkBounce 0.4s ease;
+}
+
+.check-icon {
+  color: #00D4AA;
+  min-width: 14px;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+
+/* STATS CARD  */
+
+.travel-stats {
+  margin-top: 24px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 18px 14px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
+
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+.stat-item {
+  text-align: center;
+  cursor: default;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-item h4 {
+  color: #00D4AA;
+  font-size: 22px;
+  margin: 0;
+  font-weight: 700;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+.stat-item:hover h4 {
+  transform: scale(1.18);
+  color: #00ffe0;
+}
+
+.stat-item span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  justify-self: center;
+}
+
+.counter-pop {
+  animation: counterPop 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+
+/* RESPONSIVE — TABLET  ≤ 992px */
+
+@media (max-width: 992px) {
+  .services-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .service-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .travel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* RESPONSIVE — MOBILE  ≤ 768px */
+
+@media (max-width: 768px) {
+  .services {
+    padding: 50px 20px;
+  }
+
+  .services-wrapper {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .services-left {
+    width: 100%;
+  }
+
+  .services-left h2 {
+    font-size: 26px;
+  }
+
+  .service-description {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .service-image {
+    height: 200px;
+    border-radius: 16px;
+  }
+
+  .service-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .mini-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 12px;
+    border-radius: 16px;
+  }
+
+  .mini-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 10px;
+    margin-right: 0;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .mini-card-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mini-card h4 {
+    font-size: 13px;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .mini-card p {
+    font-size: 11.5px;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .travel-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    border-radius: 22px;
+    transform: none !important;
+    animation: pulseGlow 5s ease-in-out infinite;
+  }
+
+  .travel-card h3 {
+    font-size: 24px;
+    margin: 10px 0 18px;
+  }
+
+  .travel-label {
+    font-size: 11px;
+  }
+
+  .travel-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .travel-grid p {
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .stat-card {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    padding: 14px 10px;
+    gap: 0;
+  }
+
+  .stat-item h4 {
+    font-size: 18px;
+  }
+
+  .stat-item span {
+    font-size: 11px;
+  }
+
+  .stat-divider {
+    height: 32px;
+    width: 1px;
+  }
+}
+
+
+/* SMALL MOBILE  ≤ 400px */
+
+@media (max-width: 400px) {
+  .services-left h2 {
+    font-size: 22px;
+  }
+
+  .travel-card h3 {
+    font-size: 21px;
+  }
+
+  .travel-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-item h4 {
+    font-size: 16px;
+  }
+
+  .stat-item span {
+    font-size: 10px;
+  }
+}
+
+
+/* LARGE LAPTOP  ≥ 1440px */
+
+@media (min-width: 1440px) {
+  .services {
+    padding: 90px 10%;
+  }
+
+  .services-wrapper {
+    gap: 50px;
+  }
+
+  .services-left h2 {
+    font-size: 44px;
+  }
+
+  .service-description {
+    font-size: 18px;
+    max-width: 95%;
+  }
+
+  .service-image {
+    height: 260px;
+  }
+
+  .service-cards {
+    gap: 18px;
+  }
+
+  .mini-card {
+    padding: 24px;
+  }
+
+  .mini-card h4 {
+    font-size: 18px;
+  }
+
+  .mini-card p {
+    font-size: 15px;
+  }
+
+  .mini-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .travel-card {
+    padding: 40px;
+  }
+
+  .travel-card h3 {
+    font-size: 38px;
+  }
+
+  .travel-grid p {
+    font-size: 16px;
+  }
+
+  .stat-item h4 {
+    font-size: 28px;
+  }
+
+  .stat-item span {
+    font-size: 14px;
+  }
+
+  .stat-divider {
+    height: 50px;
+  }
+}
+
+
+/* FULL HD  ≥ 1920px */
+
+@media (min-width: 1920px) {
+  .services {
+    padding: 120px 12%;
+  }
+
+  .services-wrapper {
+    gap: 70px;
+  }
+
+  .services-left h2 {
+    font-size: 56px;
+  }
+
+  .service-tag {
+    font-size: 15px;
+  }
+
+  .service-description {
+    font-size: 22px;
+    line-height: 2;
+  }
+
+  .service-image {
+    height: 320px;
+  }
+
+  .service-cards {
+    gap: 24px;
+  }
+
+  .mini-card {
+    padding: 30px;
+  }
+
+  .mini-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+  }
+
+  .mini-card h4 {
+    font-size: 22px;
+  }
+
+  .mini-card p {
+    font-size: 17px;
+  }
+
+  .travel-card {
+    padding: 50px;
+  }
+
+  .travel-card h3 {
+    font-size: 48px;
+  }
+
+  .travel-label {
+    font-size: 14px;
+  }
+
+  .travel-grid p {
+    font-size: 18px;
+  }
+
+  .stat-item h4 {
+    font-size: 34px;
+  }
+
+  .stat-item span {
+    font-size: 16px;
+  }
+
+  .stat-divider {
+    height: 60px;
+  }
+}
+
+
+/* 2K / 4K  ≥ 2560px */
+
+@media (min-width: 2560px) {
+  .services {
+    padding: 150px 14%;
+  }
+
+  .services-wrapper {
+    gap: 100px;
+  }
+
+  .services-left h2 {
+    font-size: 72px;
+  }
+
+  .service-tag {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+
+  .service-description {
+    font-size: 28px;
+    max-width: 100%;
+  }
+
+  .service-image {
+    height: 420px;
+  }
+
+  .service-cards {
+    gap: 30px;
+  }
+
+  .mini-card {
+    padding: 38px;
+    border-radius: 24px;
+  }
+
+  .mini-icon {
+    width: 90px;
+    height: 90px;
+    font-size: 40px;
+    border-radius: 20px;
+  }
+
+  .mini-card h4 {
+    font-size: 28px;
+  }
+
+  .mini-card p {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+
+  .travel-card {
+    padding: 70px;
+    border-radius: 36px;
+  }
+
+  .travel-card h3 {
+    font-size: 64px;
+  }
+
+  .travel-label {
+    font-size: 18px;
+  }
+
+  .travel-grid p {
+    font-size: 24px;
+  }
+
+  .stat-item h4 {
+    font-size: 48px;
+  }
+
+  .stat-item span {
+    font-size: 20px;
+  }
+
+  .stat-divider {
+    height: 80px;
+  }
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-tag,
+  .services-left h2,
+  .service-description,
+  .service-image,
+  .mini-card,
+  .travel-card,
+  .travel-grid p,
+  .blob-mid,
+  .services::before,
+  .services::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes floatCard {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 15px 40px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 0 0 rgba(0, 212, 170, 0);
+  }
+  50% {
+    box-shadow:
+      0 15px 40px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 35px 8px rgba(0, 212, 170, 0.12);
+  }
+}
+
+@keyframes counterPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  65%  { transform: scale(1.2); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(0, 212, 170, 0.15); }
+  50%       { border-color: rgba(0, 212, 170, 0.7); }
+}
+
+@keyframes checkBounce {
+  0%, 100% { transform: scale(1); }
+  40%       { transform: scale(1.35); }
+}
+
+@keyframes blobDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, 35px) scale(1.1); }
+  66%       { transform: translate(-25px, 55px) scale(0.94); }
+}
+
+@keyframes blobDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-55px, -30px) scale(1.12); }
+  70%       { transform: translate(25px, -55px) scale(0.91); }
+}
+
+@keyframes blobDrift3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  35%       { transform: translate(-50%, -50%) scale(1.15); }
+  70%       { transform: translate(-50%, -50%) scale(0.88); }
+}
+
+@keyframes glowOrb {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.06; }
+  50%       { transform: translate(-50%, -50%) scale(1.3); opacity: 0.1; }
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes imageReveal {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0% 0 0);   opacity: 1; }
+}
+
+@keyframes tagExpand {
+  from { letter-spacing: 1px; opacity: 0; transform: translateY(6px); }
+  to   { letter-spacing: 3px; opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gridItemIn {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

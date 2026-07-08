@@ -2,10 +2,12 @@
 
 import "./Button.css";
 
-const Button = ({ title, type, className, onClick }) => {
+const Button = ({ title, children, type, className, onClick, htmlType = "button" }) => {
+  const classes = ["custom-btn", type, className].filter(Boolean).join(" ");
+
   return (
-    <button className={`custom-btn ${type} ${className}`} onClick={onClick}>
-      {title}
+    <button type={htmlType} className={classes} onClick={onClick}>
+      {children ?? title}
     </button>
   );
 };
