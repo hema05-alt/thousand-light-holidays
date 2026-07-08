@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #00d4aa transparent;
+}
+
 body {
   font-family: var(--font-poppins);
 }
@@ -14,4 +22,26 @@ h3,
 h4,
 .logo {
   font-family: var(--font-playfair);
+}
+
+/* ==========================================
+   Premium Thin Scrollbar
+   ========================================== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4aa, #00b894);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00e6b8, #00a884);
 }
