@@ -8,44 +8,92 @@ import logo from "../../assets/images/logo.webp";
 const Navbar = ({ openBookingForm }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
+
+  // Separate refs for two typing lines
   const logoTextRef = useRef(null);
+  const taglineRef = useRef(null);
 
-  // Typing effect
+  // Typing Animation
   useEffect(() => {
-    const el = logoTextRef.current;
-    if (!el) return;
+    const titleEl = logoTextRef.current;
+    const tagEl = taglineRef.current;
 
-    const fullText = "Thousand Light Holidays";
-    let i = 0;
-    let deleting = false;
+    if (!titleEl || !tagEl) return;
+
+    const title = "Thousand Light Holidays";
+    const tagline = "Travels & Tourism";
+
+    let titleIndex = 0;
+    let tagIndex = 0;
+    let phase = "typingTitle";
     let timer;
 
-    const type = () => {
-      if (!deleting) {
-        el.textContent = fullText.slice(0, i);
-        i++;
+    const animate = () => {
+      switch (phase) {
+        case "typingTitle":
+          titleEl.textContent = title.slice(0, titleIndex);
+          titleIndex++;
 
-        if (i > fullText.length) {
-          deleting = true;
-          timer = setTimeout(type, 2000);
-          return;
-        }
-      } else {
-        el.textContent = fullText.slice(0, i);
-        i--;
+          if (titleIndex > title.length) {
+            phase = "typingTag";
+            timer = setTimeout(animate, 300);
+            return;
+          }
+          break;
 
-        if (i < 0) {
-          deleting = false;
-          i = 0;
-          timer = setTimeout(type, 500);
+        case "typingTag":
+          tagEl.textContent = tagline.slice(0, tagIndex);
+          tagIndex++;
+
+          if (tagIndex > tagline.length) {
+            phase = "pause";
+            timer = setTimeout(animate, 2000);
+            return;
+          }
+          break;
+
+        case "pause":
+          phase = "deletingTag";
+          animate();
           return;
-        }
+
+        case "deletingTag":
+          tagEl.textContent = tagline.slice(0, tagIndex);
+          tagIndex--;
+
+          if (tagIndex < 0) {
+            phase = "deletingTitle";
+            timer = setTimeout(animate, 100);
+            return;
+          }
+          break;
+
+        case "deletingTitle":
+          titleEl.textContent = title.slice(0, titleIndex);
+          titleIndex--;
+
+          if (titleIndex < 0) {
+            titleIndex = 0;
+            tagIndex = 0;
+            phase = "typingTitle";
+            timer = setTimeout(animate, 500);
+            return;
+          }
+          break;
+
+        default:
+          break;
       }
 
-      timer = setTimeout(type, deleting ? 45 : 85);
+      timer = setTimeout(
+        animate,
+        phase === "deletingTitle" || phase === "deletingTag"
+          ? 35
+          : 80
+      );
     };
 
-    type();
+    animate();
 
     return () => clearTimeout(timer);
   }, []);
@@ -85,7 +133,7 @@ const Navbar = ({ openBookingForm }) => {
     <nav className="navbar navbar-expand-lg custom-navbar" ref={navRef}>
       <div className="container-fluid px-4">
 
-        {/* Logo + Brand Name */}
+        {/* Logo + Brand */}
         <a
           className="navbar-brand"
           href="#home"
@@ -99,16 +147,24 @@ const Navbar = ({ openBookingForm }) => {
             alt="Thousand Light Holidays"
             className="navbar-logo"
           />
-          <span
-            className="navbar-logo-text"
-            ref={logoTextRef}
-          ></span>
+
+          <div className="navbar-brand-text">
+            <span
+              className="navbar-logo-text"
+              ref={logoTextRef}
+            ></span>
+
+            <span
+              className="navbar-tagline"
+              ref={taglineRef}
+            ></span>
+          </div>
         </a>
 
-        {/* Hamburger Toggle */}
+        {/* Hamburger */}
         <button
-          className={`navbar-toggler custom-toggler${
-            menuOpen ? " is-open" : ""
+          className={`navbar-toggler custom-toggler ${
+            menuOpen ? "is-open" : ""
           }`}
           type="button"
           aria-label="Toggle navigation"
@@ -119,9 +175,11 @@ const Navbar = ({ openBookingForm }) => {
           <span className="toggler-bar bar3"></span>
         </button>
 
-        {/* Navigation Menu */}
+        {/* Menu */}
         <div
-          className={`custom-collapse${menuOpen ? " show" : ""}`}
+          className={`custom-collapse ${
+            menuOpen ? "show" : ""
+          }`}
           id="navbarMenu"
         >
           <ul className="navbar-nav ms-auto nav-links">
