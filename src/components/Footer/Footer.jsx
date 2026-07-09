@@ -7,6 +7,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaInstagram,
+  FaGlobe,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -170,6 +171,18 @@ export default function Footer() {
                 @thousand_light_holidays
               </a>
             </li>
+
+            <li>
+              <FaGlobe />
+              <a
+                href="https://www.thousandlightholidays.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="website-link"
+              >
+                www.thousandlightholidays.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -180,8 +193,8 @@ export default function Footer() {
       {/* Copyright */}
       <div className="footer-bottom">
         <p>
-          © {currentYear}{" "}
-          <span>Thousand Light Holidays</span>. All rights reserved.
+          © {currentYear} <span>Thousand Light Holidays</span>. All rights
+          reserved.
         </p>
       </div>
     </footer>
